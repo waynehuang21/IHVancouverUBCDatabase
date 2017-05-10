@@ -1,0 +1,41 @@
+#infoTable {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+#infoTable th {
+	text-align: left;
+	background-color: #F4F4F4;
+}
+
+.tableCell {
+	padding: 8px 0 8px;
+	width: 33%;
+}
+
+#formComment{
+	margin-bottom: 36px;
+}
+
+#commentBody {
+	width: 33%;
+	margin: 8px 0 16px 0;
+}
+
+.comment {
+	padding: 4px 0 4px 0;
+	margin: 2px 0 2px 0;
+	background-color: #F4F4F4;
+	width: 250%;
+}
+
+#edit {
+	display: block;
+	float: right;
+	clear: both;
+}
+
+.button {
+	margin: 8px;
+}

@@ -1,0 +1,28 @@
+#absenceTable {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	table-layout: fixed;
+}	
+
+#absenceTable th {
+	text-align: left;
+	padding: 0 0 16px 0;
+}
+
+#absenceTable td {
+	padding: 8px 0 8px;
+}
+
+#absenceTable tr:nth-child(odd) {
+	background-color: #F4F4F4;
+}
+
+p {
+	display: inline-block;
+	margin: 0;
+	vertical-align: top;
+	padding-left: 8px;
+	max-width: 70%;
+}
+

@@ -1,0 +1,33 @@
+#contentHeader p {
+	display: inline-block;
+}
+
+#studentsTable {
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	table-layout: fixed;
+}
+
+#studentsTable th {
+	text-align: left;
+	padding: 0 0 16px 0;
+}
+
+#studentsTable td {
+	padding: 8px 0 8px;
+}
+
+#studentsTable tr:nth-child(odd) {
+	background-color: #F4F4F4;
+}
+
+#edit {
+	display: block;
+	float: right;
+	clear: both;
+}
+
+.button {
+	margin: 8px;
+}
