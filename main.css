@@ -53,3 +53,30 @@ body {
 	margin-right: auto;
 	margin-bottom: 32px;
 }
+#edit {
+	display: block;
+	float: right;
+	clear: both;
+}
+
+.button {
+	margin: 8px;
+}
+table {
+    border-collapse: collapse;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #contentBody, #contentBody * {
+    visibility: visible;
+	-webkit-print-color-adjust: exact;
+  }
+  #contentBody {
+	-webkit-print-color-adjust: exact;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}

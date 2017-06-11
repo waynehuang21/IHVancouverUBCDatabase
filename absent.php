@@ -1,3 +1,17 @@
+<?php
+    $user = 'ihvan';
+    $pass = 'jpubc';
+	
+    if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        
+        if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != md5($pass))) {     
+            header('Location: loginform.php');
+        } 
+        
+    } else {
+        header('Location: loginform.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>

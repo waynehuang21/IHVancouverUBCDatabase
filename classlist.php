@@ -1,5 +1,18 @@
 <?php
 				
+					$user = 'ihvan';
+					$pass = 'jpubc';
+					
+					if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+						
+						if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != md5($pass))) {    
+							header('Location: loginform.php');
+						} 
+						
+					} else {
+						header('Location: loginform.php');
+					}
+
 					require_once('config.php');
 					
 					$query = "SELECT DISTINCT class FROM Students WHERE CURDATE() > arrival_date && CURDATE() < departure_date";
@@ -13,14 +26,14 @@
 		<title>Class List</title>
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" href="listtable.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+		<script src="draggableclass.js"></script>
 		<script>
-		//function to grab the element by the id
-		function $(id){
-			var element = document.getElementById(id);
-			if( element == null )
-			alert( "Programmer error: " + id + " does not exist." );
-			return element;
-		}
+			function edit() {
+				document.getElementById('edit').innerHTML = '<input type="submit" onclick="location.reload()" class="button" value="Submit">';
+			}
 		</script>
 	</head>
 	<body>
@@ -41,6 +54,9 @@
 			</div>
 			<div id="content">
 				<div id="contentHeader">
+					<div id="edit">
+						<input type="button" value="Edit" class="button" onclick="edit()" id="editbutton">
+					</div>
 					<h2>Class List:</h2>					
 				</div>
 				<div id="contentBody">
@@ -54,12 +70,13 @@
 							$total = 0;
 							
 							echo 
-							'<table class="listTable">
+							'<table class="listTable" id="'.$class.'">
+								<tbody class="connectedSortable">
 								<tr>
 									<th colspan="2" class="listHeading">'.$class.'</td>
 								</tr>';
 							
-							$query2 = "SELECT name, english_name FROM Students WHERE class = \"" . $class . "\" && 
+							$query2 = "SELECT student_id, name, english_name, arrival_date FROM Students WHERE class = \"" . $class . "\" && 
 									  CURDATE() > arrival_date && CURDATE() < departure_date";
 							$response2 = @mysqli_query($dbc, $query2);
 							
@@ -73,7 +90,15 @@
 										$english_name = "";
 									}
 									echo
-									'<tr>
+									'<tr id="'.$student['student_id'].'"';
+									
+									if(strtotime(date("Y/m/d")) - strtotime($student['arrival_date']) < 518400) {
+										echo
+										'style="background-color:#FFE738"';
+									}
+
+									echo
+									'>
 									<td class="listCell">'.$english_name.'</td>
 									<td class="listCell">'.$student['name'].'</td>
 									</tr>';	
@@ -90,6 +115,7 @@
 							'<tr>
 								<td colspan="2" id="total">'.$total.'</td>
 							</tr>
+							</tbody>
 							</table>';		
 						}
 					}

@@ -1,20 +1,21 @@
-#absenceTable {
+#absenceTable, #morningAbsenceTable, #afternoonAbsenceTable, #eveningAbsenceTable {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 48px;
 	width: 80%;
 	table-layout: fixed;
 }	
 
-#absenceTable th {
+#absenceTable th, #morningAbsenceTable th, #afternoonAbsenceTable th, #eveningAbsenceTable th {
 	text-align: left;
 	padding: 0 0 16px 0;
 }
 
-#absenceTable td {
+#absenceTable td, #morningAbsenceTable td, #afternoonAbsenceTable td, #eveningAbsenceTable td {
 	padding: 8px 0 8px;
 }
 
-#absenceTable tr:nth-child(odd) {
+#absenceTable tr:nth-child(odd), #morningAbsenceTable tr:nth-child(odd), #afternoonAbsenceTable tr:nth-child(odd), #eveningAbsenceTable tr:nth-child(odd) {
 	background-color: #F4F4F4;
 }
 
@@ -24,5 +25,11 @@ p {
 	vertical-align: top;
 	padding-left: 8px;
 	max-width: 70%;
+}
+
+#content h1 {
+	margin:0;
+	margin-bottom:32px;
+	text-align:center;
 }
 

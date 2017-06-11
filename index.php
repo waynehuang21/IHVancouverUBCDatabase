@@ -1,3 +1,17 @@
+<?php
+    $user = 'ihvan';
+    $pass = 'jpubc';
+	
+    if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+        
+        if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != md5($pass))) {    
+            header('Location: loginform.php');
+        } 
+        
+    } else {
+        header('Location: loginform.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -5,7 +19,6 @@
 		<title>Student Database</title>
 		<link rel="stylesheet" href="main.css">
 		<link rel="stylesheet" href="studentstable.css">
-		<script type="text/javascript" src="js/textsizer.js"></script>
 		<script>
 		//function to grab the element by the id
 		function $(id){
@@ -95,9 +108,6 @@
 			</div>
 			<div id="content">
 				<div id="contentHeader">
-					<div style="float: right; clear: both;">
-						<a href="javascript:ts('body',1)">[+]</a> | <a href="javascript:ts('body',-1)">[-]</a>
-					</div>
 					<div id="edit">
 						<input type="button" value="Edit" class="button" onclick="edit()">
 					</div>

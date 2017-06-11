@@ -1,5 +1,18 @@
 <?php
 				
+					$user = 'ihvan';
+					$pass = 'jpubc';
+					
+					if (isset($_COOKIE['username']) && isset($_COOKIE['password'])) {
+						
+						if (($_COOKIE['username'] != $user) || ($_COOKIE['password'] != md5($pass))) {    
+							header('Location: loginform.php');
+						} 
+						
+					} else {
+						header('Location: loginform.php');
+					}
+
 					require_once('config.php');
 					
 					$query = "SELECT DISTINCT colour FROM Students";
