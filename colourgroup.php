@@ -77,7 +77,7 @@
 								</tr>';
 							
 							$query2 = "SELECT student_id, name, english_name, arrival_date FROM Students WHERE colour = \"" . $colour . "\" &&
-									  CURDATE() > arrival_date && CURDATE() < departure_date";
+									  CURDATE() >= arrival_date && CURDATE() <= departure_date";
 							$response2 = @mysqli_query($dbc, $query2);
 							
 							if($response2){

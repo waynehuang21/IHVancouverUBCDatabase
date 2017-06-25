@@ -15,7 +15,7 @@
 
 					require_once('config.php');
 					
-					$query = "SELECT DISTINCT class FROM Students WHERE CURDATE() > arrival_date && CURDATE() < departure_date";
+					$query = "SELECT DISTINCT class FROM Students WHERE CURDATE() >= arrival_date && CURDATE() <= departure_date";
 					
 					$response = @mysqli_query($dbc, $query);
 ?>
@@ -77,7 +77,7 @@
 								</tr>';
 							
 							$query2 = "SELECT student_id, name, english_name, arrival_date FROM Students WHERE class = \"" . $class . "\" && 
-									  CURDATE() > arrival_date && CURDATE() < departure_date";
+									  CURDATE() >= arrival_date && CURDATE() <= departure_date";
 							$response2 = @mysqli_query($dbc, $query2);
 							
 							if($response2){
