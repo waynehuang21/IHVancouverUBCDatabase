@@ -7,19 +7,19 @@
 	
 	if($age == 0){
 		$query = "SELECT student_id, name, english_name, age, room, colour, class, arrival_date, departure_date FROM Students
-				 WHERE CURDATE() > arrival_date && CURDATE() < departure_date ORDER by " . $type;
+				 WHERE CURDATE() >= arrival_date && CURDATE() <= departure_date ORDER by " . $type;
 	}
 	else if($age == 1){
 		$query = "SELECT student_id, name, english_name, age, room, colour, class, arrival_date, departure_date FROM Students
-				 WHERE CURDATE() > arrival_date && CURDATE() < departure_date && age <= 13 ORDER by " . $type;
+				 WHERE CURDATE() >= arrival_date && CURDATE() <= departure_date && age <= 13 ORDER by " . $type;
 	}
 	else if($age == 2){
 		$query = "SELECT student_id, name, english_name, age, room, colour, class, arrival_date, departure_date FROM Students
-				 WHERE CURDATE() > arrival_date && CURDATE() < departure_date && age > 13 ORDER by " . $type;
+				 WHERE CURDATE() >= arrival_date && CURDATE() <= departure_date && age > 13 ORDER by " . $type;
 	}
 	else {
 		$query = "SELECT student_id, name, english_name, age, room, colour, class, arrival_date, departure_date FROM Students
-				 WHERE CURDATE() > arrival_date && CURDATE() < departure_date ORDER by " . $type;
+				 WHERE CURDATE() >= arrival_date && CURDATE() <= departure_date ORDER by " . $type;
 	}
 	
 	$response = @mysqli_query($dbc, $query);
@@ -38,7 +38,13 @@
 		while($row = mysqli_fetch_array($response)) {
 			
 		echo
-			'<tr>
+			'<tr ';
+
+		if(strcmp($row['arrival_date'], date("Y-m-d")) == 0 || strcmp($row['departure_date'], date("Y-m-d")) == 0) {
+			echo 'style="background-color:#FFE738;"';
+		}
+
+		echo '>
 				<td><input name="name_'.$row['student_id'].'" type"text" value="'.$row['name'].'"></td>
 				<td><input name="english_name_'.$row['student_id'].'" type"text" value="'.$row['english_name'].'"></td>
 				<td><input name="colour_'.$row['student_id'].'" type"text" value="'.$row['colour'].'"></td>
